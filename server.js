@@ -5,7 +5,11 @@ const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: "https://gaming-garden.onrender.com",
+        methods: ["GET", "POST,"]
+    });
 
 // App configuration
 const PORT = process.env.PORT || 3000;
