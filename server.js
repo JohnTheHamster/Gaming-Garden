@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
         origin: "https://gaming-garden.onrender.com",
-        methods: ["GET", "POST,"]
+        methods: ["GET", "POST"]
     });
 
 // App configuration
