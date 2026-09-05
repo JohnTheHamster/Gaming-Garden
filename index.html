@@ -199,3 +199,15 @@
                 const row = document.createElement('div');
                 row.className = "user-row";
                 row.innerHTML = `
+${user.name} (${user.role})
+${user.role !== 'Owner' ? <button class="ban-btn"
+  onclick="banUser('${user.id}')">Ban</button> : 'Active'}
+  `;
+                listContainer.appendChild(row);
+            });
+        });
+        function banUser(id)
+        {if(confirm("Are you sure you want to ban this user?")){
+            socket.emit('ban-user', id);
+        }
+        }
