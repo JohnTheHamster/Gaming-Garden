@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming Garden</title>
-    <script src="/socket.io/socket.io.js"></script>
+    <!-- Using the reliable Global CDN link for Socket.io -->
+    <script src="https://socket.io"></script>
     <style>
         /* Colour Scheme: Midnight Dark Theme */
         body { font-family: Arial, sans-serif; background: #121212; color: white; text-align: center; margin: 0; padding: 20px; }
@@ -198,5 +199,3 @@
                 const row = document.createElement('div');
                 row.className = "user-row";
                 row.innerHTML = `
-                    <span><b>${user.name}</b> (${user.role})</span>
-${user.role !== 'Owner' ? <button class="ban-btn" onclick="banUser('${user.id}')">Ban</button> : 'Active'}`;listContainer.appendChild(row);});});function banUser(id) {if(confirm("Are you sure you want to ban this user?")) {socket.emit('ban-user', id);}}function triggerShutdown() {if(confirm("Are you sure you want to shutdown the portal? All active users will be locked out.")) {socket.emit('shutdown-site');}}function triggerRestore() {socket.emit('restore-site');}function updateAdminButtonsUI(isShutdown) {const shutdownBtn = document.getElementById('shutdown-action-btn');const restoreBtn = document.getElementById('restore-action-btn');if (isShutdown) {shutdownBtn.classList.add('hidden');restoreBtn.classList.remove('hidden');} else {restoreBtn.classList.add('hidden');shutdownBtn.classList.remove('hidden');}}
